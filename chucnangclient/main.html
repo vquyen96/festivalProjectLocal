@@ -1,0 +1,50 @@
+<div class="mainRow row" ng-controller="ctrlMain">
+	<div class="detailLoad"></div>
+	<div class="col-md-6 col-sm-12 col-xs-12 mainItem" ng-repeat="data in listData.slice(((currentPage-1)*perPage), ((currentPage)*perPage))" ng-click="detailPage(data._id)">
+		<div class="mainSlide1">
+			<a href=""><img ng-src="{{data.url1}}"></img></a>
+		</div>
+		<div class="mainSlide2">
+			<a href=""><img ng-src="{{data.url2}}"></img></a>
+		</div>
+		<div class="mainSlide3">
+			<a href=""><img ng-src="{{data.url3}}"></img></a>
+		</div>
+		
+		<div class="mainItemContent">
+			<div class="mainItemContentShow">
+				<h3><a href="" class="mainItemContentShowName">{{data.nameLeHoi}}</a></h3>
+				<p>
+					<span class="glyphicon glyphicon-globe"></span>
+					<span>{{data.timeStart | date : "dd/MM/y" }}</span>
+					<span>-</span>
+					<span>{{data.timeEnd | date : "dd/MM/y" }}</span>
+				</p>
+				
+				<p>
+					<span class="glyphicon glyphicon-map-marker"></span>
+					<span>{{data.diadiem}}</span>
+				</p>
+				<p class="mainItemContentPrice">
+					<span class=" glyphicon glyphicon-btc"></span>
+					{{data.price | currency: "" :0 }} VND
+					
+				</p>
+			</div>
+			
+		</div>
+	</div>
+	<div class="mainPaginate">
+	    <ul uib-pagination total-items="totalItems" 
+	    	ng-model="currentPage" 
+	    	ng-click="setPage(currentPage)" 
+	    	max-size="maxSize" 
+	    	class="pagination-sm" 
+	    	boundary-links="true"
+	    	rotate = "true"  
+	    	force-ellipses="true" 
+	    	num-pages="numPages"
+	    	items-per-page= "perPage">		
+	    </ul>
+	</div>
+</div>

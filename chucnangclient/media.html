@@ -1,0 +1,33 @@
+<div class="" ng-controller="ctrlMedia">
+    <div class="detailLoad"></div>
+    <div class="flexbin flexbin-margin">
+        <a href="" ng-repeat="data in listData.slice(((currentPage-1)*perPage), ((currentPage)*perPage))" class="mediaItem" ng-click="showVideo(data.url4,data.nameLeHoi,data._id)">
+            <img ng-src="{{data.url4}}" />
+            <div class="mediaItemHover"></div>
+        </a>
+        
+    </div>
+    <div id="modal-video" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            
+            <a href="" class="mediaModal" ng-click="mediaBtnDetail()">
+                <img id="video-frame" width="900" height="" ng-src="{{mySrc}}" frameborder="0" allowfullscreen>
+                <div class="mediaHead">
+                    <h1 id="nameLeHoi"></h1>
+                </div>
+            </a>
+            
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal --> 
+    <ul uib-pagination total-items="totalItems" 
+            ng-model="currentPage" 
+            ng-click="setPage(currentPage)" 
+            max-size="maxSize" 
+            class="pagination-sm" 
+            boundary-links="true"
+            rotate = "true"  
+            force-ellipses="true" 
+            num-pages="numPages"
+            items-per-page= "perPage">      
+        </ul>         
+</div>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Đăng nhập</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<link rel="stylesheet" type="text/css" href="fonts/css/font-awesome.min.css">
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
+</head>
+<body ng-controller="ctrlLogin">
+	<div class="detailLoad"></div>
+	<div class="loginPage">
+		<div class="container">
+			<div class="row main">
+				<div class="formLogin well">
+					<div class="alert alert-success" role="alert"></div>
+					<div class="alert alert-danger" role="alert"></div>
+					<div>
+						<h1>Đăng nhập</h1>
+					</div>
+					<form method="post" name="form">
+						<div class="form-group">
+							<label>Tài khoản</label>
+							<input type="text" name="userName" class="form-control" ng-model="data.username" ng-minlength="6" ng-maxlength="15" required>
+							<i class="fa fa-check text-success" ng-show="form.userName.$dirty && form.userName.$valid"></i>
+							<div class="text-danger">
+								<span ng-show="form.userName.$dirty && form.userName.$error.required">Vui lòng điền tài khoản</span>
+								<span ng-show="form.userName.$error.minlength">Tên truy cập phải dài hơn 6 kí tự</span>
+								<span ng-show="form.userName.$error.maxlength">Tên truy cập phải ngắn hơn 15 kí tự</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Mật khẩu</label>
+							<input type="password" name="userPass" class="form-control" ng-model="data.password" ng-minlength="6" ng-maxlength="15" required>
+							<i class="fa fa-check text-success" ng-show="form.userPass.$dirty && form.userPass.$valid"></i>
+							<div class="text-danger">
+								<span ng-show="form.userPass.$dirty && form.userPass.$error.required">Vui lòng điền mật khẩu</span>
+								<span ng-show="form.userPass.$error.minlength">Mật khẩu phải dài hơn 6 kí tự</span>
+								<span ng-show="form.userPass.$error.maxlength">Mật khẩu phải ngắn hơn 15 kí tự</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label></label>
+							<input type="submit" name="sbm" value="Đăng nhập" class="btn btn-primary" ng-click="btnSbm()" ng-disabled="form.userName.$invalid || form.userPass.$invalid">
+							<input type="submit" class="btn btn-warning" name="sbm" value="Đăng ký" class="btn" ng-click="btnRegister()">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
+</body>
+</html>

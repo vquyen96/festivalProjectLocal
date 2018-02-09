@@ -1,0 +1,89 @@
+<div class="container" ng-controller="ctrlSearch">
+	<div class="detailLoad"></div>
+	<div class="col-md-8 col-sm-12 col-xs-12">
+		<!-- <div class="searchInformation form-group" >
+			<span class="searchHeadSearch">Tìm kiếm : </span>
+			<input type="text" name="search" class="form-control" ng-model="searchTitle">
+			<span class="searchHeadContent">"{{searchTitle}}"</span>
+		</div> -->
+		<div class="searchInformation">
+			<div class="input-group input-group-lg col-md-6 col-sm-12 col-xs-12">
+				<span class="input-group-addon">Tìm kiếm </span>
+		  		<input type="text" class="form-control" aria-describedby="basic-addon3" ng-model="searchTitle">
+			</div>
+		  	
+		</div>
+		<div class="searchContent">
+			<div class="row searchContentItem" ng-repeat="dataleft in listDataLeft.slice(((currentPageL-1)*perPageL), ((currentPageL)*perPageL)) | filter : searchTitle">
+				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-4 thumbnail">
+					<a href="" ng-click="btnDetail(dataleft._id)"><img ng-src="{{dataleft.url2}}"></a> 
+				</div>
+				<div class="searchContentItemCap col-md-6 col-sm-6 col-xs-8">
+					<h4><a href="" ng-click="btnDetail(dataleft._id)">{{dataleft.nameLeHoi}}</a></h4>
+					<div class="responSS">
+						<span>{{dataleft.timeStart  | date : "dd/MM/y" }}</span>
+						<span>Đến</span>
+						<span>{{dataleft.timeEnd  | date : "dd/MM/y" }}</span>
+					</div>
+					<div>
+						<span class="glyphicon glyphicon-map-marker"></span>
+						<span><a href="" ng-click="btnDetail(dataleft._id)">{{dataleft.diadiem}}</a></span>
+					</div>
+					<div class="searchPrice responSS">
+						<span><a href="" ng-click="btnDetail(dataleft._id)"><b>Giá vé :</b> {{dataleft.price | currency: "" :0 }} VND</a></span>
+					</div>
+				</div>
+				<div class="searchContentItemIcon col-md-2 col-sm-2 col-xs-12">
+					<a href=""><span class="glyphicon glyphicon-chevron-right"></span></a>
+				</div>
+			</div>
+			<ul uib-pagination total-items="totalItemsL" 
+		    	ng-model="currentPageL" 
+		    	ng-click="setPage(currentPageL)" 
+		    	max-size="maxSize" 
+		    	class="pagination-sm" 
+		    	boundary-links="true"
+		    	rotate = "true"  
+		    	force-ellipses="true" 
+		    	num-pages="numPages"
+		    	items-per-page= "perPageL">		
+		    </ul>
+		</div>
+	</div>
+	<div class="searchHot col-md-4 col-sm-12 col-xs-12">
+		<div class="searchHotInfo">
+			<span class="searchHotInfoContent">Lễ hội Thịnh Hành</span>
+		</div>
+		<div class="searchHotContent">
+			<div class="row searchHotContentItem" ng-repeat="data in listDataRight.slice(((currentPageR-1)*perPageR), ((currentPageR)*perPageR))">
+				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-4 thumbnail">
+					<a href="" ng-click="btnDetail(data._id)"><img ng-src="{{data.url2}}"></a>
+				</div>
+				<div class="searchContentItemCap col-md-6 col-sm-6 col-xs-6">
+					<h5><a href="" ng-click="btnDetail(data._id)">{{data.nameLeHoi}}</a></h5>
+					<div class="searchPrice">
+						<span class=" glyphicon glyphicon-credit-card"></span>
+						<span><a href="" ng-click="btnDetail(dataleft._id)">{{data.price | currency: "" :0 }} VND</a></span>
+					</div>
+				</div>
+				<div class="searchHotItemIcon col-md-2 col-sm-2 col-xs-2">
+					<a href=""><span class="glyphicon glyphicon-chevron-right"></span></a>
+				</div>
+			</div>
+		</div>
+		<div>
+		    <ul uib-pagination total-items="totalItemsR" 
+		    	ng-model="currentPageR" 
+		    	ng-click="setPage(currentPageR)" 
+		    	max-size="maxSize" 
+		    	class="pagination-sm" 
+		    	boundary-links="true"
+		    	rotate = "true"  
+		    	force-ellipses="true" 
+		    	num-pages="numPages"
+		    	items-per-page= "perPageR">		
+		    </ul>
+		</div>
+	</div>
+	
+</div>

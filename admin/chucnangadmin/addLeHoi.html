@@ -1,0 +1,130 @@
+<div class="container" ng-controller="ctrlAddLeHoi">
+	<div class="row addLeHoiForm" >
+		<div class="alert alert-success" role="alert" style="display: none;"></div>
+		<div class="alert alert-danger" role="alert" style="display: none;"></div>
+		<form method="post" name="form">
+			<div class="form-group">
+				<label>Tên Lễ Hội</label>
+				<input type="text" name="nameLeHoi" id="nameLeHoi" class="form-control" ng-model="festival.nameLeHoi" required>
+				<i class="fa fa-check text-success" ng-show="form.nameLeHoi.$dirty && form.nameLeHoi.$valid"></i>
+				<div class="text-danger">
+					<span ng-show="form.nameLeHoi.$dirty && orm.nameLeHoi.$error.required">Vui lòng điền tên lễ hội</span>
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Bắt đầu</label>
+					<input type="date" name="timeStart" id="timeStart" class="form-control" ng-model="festival.timeStart">
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Kết thúc</label>
+					<input type="date" name="timeEnd" id="timeEnd" class="form-control" ng-model="festival.timeEnd">
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Địa điểm</label>
+					<input type="text" name="diadiem" id="diadiem" class="form-control" ng-model="festival.diadiem" required>
+					<i class="fa fa-check text-success" ng-show="form.diadiem.$dirty && form.diadiem.$valid"></i>
+					<div class="text-danger">
+						<span ng-show="form.diadiem.$dirty && form.diadiem.$error.required">Vui lòng điền địa điểm lễ hội</span>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Giá vé</label>
+					<input type="text" name="price" id="price" class="form-control" ng-model="festival.price" required>
+					<i class="fa fa-check text-success" ng-show="form.diadiem.$dirty && form.diadiem.$valid"></i>
+					<div class="text-danger">
+						<span ng-show="form.diadiem.$dirty && form.diadiem.$error.required">Vui lòng điền giá vé tham gia</span>
+					</div>
+				</div>
+					
+			</div>
+			<div class="row form-group">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Kinh độ</label>
+					<input type="text" name="kinhdo" id="kinhdo" class="form-control" ng-model="festival.kinhdo" required>
+					<i class="fa fa-check text-success" ng-show="form.kinhdo.$dirty && form.kinhdo.$valid"></i>
+					<div class="text-danger">
+						<span ng-show="form.kinhdo.$dirty && form.kinhdo.$error.required">Vui lòng điền kinh độ</span>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Vĩ độ</label>
+					<input type="text" name="vido" id="vido" class="form-control" ng-model="festival.vido" required>
+					<i class="fa fa-check text-success" ng-show="form.vido.$dirty && form.vido.$valid"></i>
+					<div class="text-danger">
+						<span ng-show="form.vido.$dirty && form.vido.$error.required">Vui lòng điền vĩ độ</span>
+					</div>
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Lục Địa</label>
+					<select class="form-control" ng-model="festival.lucdia" id="lucdia">
+						<option selected="selected" value="Việt Nam">Việt Nam</option>
+						<option value="Châu Á">Châu Á</option>
+						<option value="Châu Âu">Châu Âu</option>
+						<option value="Châu Phi">Châu Phi</option>
+						<option value="Châu Úc">Châu Úc</option>
+						<option value="Châu Mỹ">Châu Mỹ</option>
+					</select>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Tôn Giáo</label>
+					<select class="form-control" ng-model="festival.tongiao" id="tongiao">
+						<option selected="selected" value="Không">Không</option>
+						<option value="Đạo Phật">Đạo Phật</option>
+						<option value="Đạo Hồi">Đạo Hồi</option>
+						<option value="Đạo Thiên Chúa">Đạo Thiên Chúa</option>
+						<option value="Đạo Hindu">Đạo Hindu</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Chi tiết</label>
+				<textarea name="chitiet" id="chitiet" class="addLeHoiChiTiet form-control" ng-model="festival.chitiet" rows="10" required></textarea>
+				<i class="fa fa-check text-success" ng-show="form.chitiet.$dirty && form.chitiet.$valid"></i>
+				<div class="text-danger">
+					<span ng-show="form.chitiet.$dirty && form.chitiet.$error.required">Vui lòng điền nội dung</span>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Ảnh 1</label>
+					<input type="file" accept="image/*" file-model="avatar" ng-model-instant multiple onchange="angular.element(this).scope().file_changed1(this)">
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Ảnh 2</label>
+					<input type="file" accept="image/*" file-model="avatar" ng-model-instant multiple onchange="angular.element(this).scope().file_changed2(this)">
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Ảnh 3</label>
+					<input type="file" accept="image/*" file-model="avatar" ng-model-instant multiple onchange="angular.element(this).scope().file_changed3(this)">
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Ảnh 4</label>
+					<input type="file" accept="image/*" file-model="avatar" ng-model-instant multiple onchange="angular.element(this).scope().file_changed4(this)">
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Ảnh 5</label>
+					<input type="file" accept="image/*" file-model="avatar" ng-model-instant multiple onchange="angular.element(this).scope().file_changed5(this)">
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Ảnh 6</label>
+					<input type="file" accept="image/*" file-model="avatar" ng-model-instant multiple onchange="angular.element(this).scope().file_changed6(this)">
+				</div>
+			</div>
+			<div>
+				<input type="button" class="btn btn-primary" id="btnSbm"  name="btnSbm" value="Thêm mới" ng-click="btnAdd()" ng-disabled="form.nameLeHoi.$invalid || form.diadiem.$invalid || form.kinhdo.$invalid || form.vido.$invalid">
+				<span class="glyphicon glyphicon-repeat text-danger userAlertDan" ng-hide="userAlertBtn"></span>
+				<span class="glyphicon glyphicon-ok text-success userAlertSuc" ng-show="userAlertBtn"></span>
+			</div>
+		</form>
+	</div>
+</div>

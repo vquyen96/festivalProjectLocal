@@ -1,0 +1,54 @@
+<div class="row" ng-controller="ctrlListLeHoi">
+	<div class="detailLoad"></div>
+	<div class="listLeHoiHeader">
+		
+		<div class="col-md-7 col-sm-12 col-xs-12 form-group">
+			<input type="button" name="" class="btn btn-warning" ng-click="btnAddUser()" value="Thêm lễ hội" ></input>
+			<input type="text" name="" class="btn btn-default" ng-model="perPage" placeholder="Số bản ghi"></input>
+			<input type="button" name="" class="btn btn-success responSS" value= "Số bản ghi"></input>
+		</div>
+		<div class="col-md-5 col-sm-12 col-xs-12 form-group">
+			<input type="text" name="" class="btn btn-default" ng-model="fesSearch"  placeholder="Tìm kiếm"></input>
+			<input type="button" name="" class="btn btn-success responSS" value="Tìm kiếm" ng-click="btnFesSearch()"></input>
+		</div>
+	</div>
+	<div class="listLeHoiTableBig">
+		<table class="listLeHoiTable">
+			<tr>
+				<td><a href="" class="btn" ng-click="btnSortName()">Tên<span class="responSS">Lễ Hội </span> <span class="responSS glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td><a href="" class="btn" ng-click="btnSortTimeStart()"><span class="responSS"> Thời Gian </span>Bắt Đầu <span class="responSS glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td class="responsive992 responsive768"><a href="" class="btn" ng-click="btnSortTimeEnd()">THời Gian Kết Thúc <span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td><a href="" class="btn" ng-click="btnSortPlace()">Địa Điểm <span class="responSS glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td class="responsive992 responsive768"><a href="" class="btn" ng-click="btnSortLucDia()">Châu Lục <span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td class="responsive992 responsive768"><a href="" class="btn" ng-click="btnSortTonGiao()">Tôn Giáo <span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td class="responsive768"><a href="" class="btn">Sửa</span></a></td>
+				<td class="responsive768"><a href="" class="btn">Xóa</span></a></td>
+				
+			</tr>
+			<tr ng-repeat="data in listUser.slice(((currentPage-1)*perPage), ((currentPage)*perPage)) | orderBy : listUserSort |  filter : fesSearch">
+				<td>{{data.nameLeHoi}}</td>
+				<td>{{data.timeStart| date : "dd/MM/y" }}</td>
+				<td class="responsive992 responsive768">{{data.timeEnd| date : "dd/MM/y" }}</td>
+				<td>{{data.diadiem}}</td>
+				<td class="responsive992 responsive768">{{data.lucdia}}</td>
+				<td class="responsive992 responsive768">{{data.tongiao}}</td>
+				<td class="responsive768"><a href="" class="btn btn-primary" ng-click="btnEdit(data._id)">Sửa</a></td>
+				<td class="responsive768"><a href="" class="btn btn-danger"  ng-click="btnDelete(data._id,data.nameLeHoi)">Xóa</a></td>
+			</tr>
+			
+		</table>
+		<div>
+		    <ul uib-pagination total-items="totalItems" 
+		    	ng-model="currentPage" 
+		    	ng-click="setPage(currentPage)" 
+		    	max-size="maxSize" 
+		    	class="pagination-sm" 
+		    	boundary-links="true"
+		    	rotate = "true"  
+		    	force-ellipses="true" 
+		    	num-pages="numPages"
+		    	items-per-page= "perPage">		
+		    </ul>
+		</div>
+	</div>
+</div>

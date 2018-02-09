@@ -1,0 +1,709 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: white;
+}
+.masterLoad{
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('../imgs/Preloader_3.gif') center no-repeat #fff;
+}
+.detailLoad{
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('../imgs/Preloader_3.gif') center no-repeat #fff;
+}
+.row{
+	margin:0 ;
+}
+.container-fluid{
+	padding: 0;
+}
+/*start header*/
+header{
+	background: #090909;
+}
+.btnHeaderBar{
+/*	border-radius: 20%;
+	font-size: 20px;
+	padding: 10px 15px;
+	color: #fff;*/
+	background: none;
+	color: #fff;
+	font-size: 20px;
+	position: absolute;
+	top: 33px;
+	right: 0px;
+	display: none;
+	z-index: 99;	
+}
+
+.headerLogo img{
+	width: 200px;
+	margin: 0 30px;
+	display: inline-block;
+	transition: .5s;
+}
+.headerLogo img:hover{
+	transform: scale(1.5);
+}
+.headerSearch{
+	padding: 30px 10px;
+}
+.headerUser{
+	margin:30px 0 20px;
+}
+.headerUser a{
+	color: #ccf;
+	font-size: 18px;
+	text-decoration: none;
+	padding: 10px;	
+}
+.headerLogin{
+	text-align: right;
+	transition: .5s;
+}
+.headerLogin:hover{
+	color: #fff;
+	transform: scale(1.1);
+}
+.headerRegister{
+	text-align: left;
+	transition: .5s;
+}
+.headerRegister:hover{
+	color: #fff;
+	transform: scale(1.1);
+}
+.headerUserAva{
+	text-align: center;
+	transition: .5s;
+}
+.headerUserAva:hover{
+	color: #fff;
+	transform: scale(1.1);
+}
+.headerAva{
+	height: 50px;
+	border-radius: 50%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+/*end header*/
+
+/*start nav*/
+nav{
+	background: #090909;
+	margin-bottom: 5px;
+	/*margin-bottom: 10px;*/
+}
+nav ul{
+	margin: 0;
+}
+.navItem{
+	text-align: center;
+	font-size: 18px;
+	list-style:none;
+	padding: 0;
+}
+.navItem a{
+	color: #ccf;
+	text-decoration: none;
+	display: inline-block;
+	width: 100%;
+	padding: 7px 0 ;
+	transition: .5s;
+}
+.navDrop li{
+	list-style: none;
+	display: none;
+}
+.navItem:hover{
+	background:#fc8804; 
+}
+.navItem:hover a{
+	transform: scale(1.1);
+}
+.navItem:hover ul li{
+	display: block;
+}
+.navItem-icon{
+	transition: .3s;
+}
+.navItem:hover .navItem-icon{
+	transform: rotate(90deg);
+}
+.navItem:hover a{
+	color: #fff;
+}
+.navItem ul li{
+	background:#090909;
+	border-bottom: 1px solid rgba(44, 44, 44, 0.8);
+	
+}
+.navItem>ul{
+	position: absolute;
+	width: 100%;
+	z-index: 99;
+}
+.navItem ul li:hover{
+	background:#fc8804;
+}
+.masterMain{
+	min-height: 400px;
+}
+.mainRow{
+	margin: 0;
+}
+/*end nav*/
+
+/*start main*/
+.mainItem{
+	padding: 0;
+	border: 5px solid #fff; 
+	overflow: hidden;
+
+}
+.mainItem img{
+	width: 100%;
+	border-radius: 5px;
+}
+.mainItem:hover .mainItemContent{
+	display: block;
+} 
+
+.mainItemContent{
+	position: absolute;
+	background: #fff4;
+	bottom: 0px;
+	height: 100%;
+	width: 100%;
+	display: none;
+	color: #fff;
+	
+}
+.mainItemContentShow{
+	width: 50%;
+	height: 50%;
+	background: #000;
+	opacity: 0.7;
+	padding: 20px;
+	border-radius: 20px;
+	margin: auto;
+	margin-top: 100px;
+	transition: margin-left .8s;
+	display: block;
+	cursor: pointer;
+}
+.mainItemContentShow a{
+	text-decoration: none;
+}
+.mainItemContentShowName{
+	color: #fc8804;
+	font-weight: bold;
+}
+.mainItemContentPrice{
+	color: #fa3e3e;
+	font-weight: bold;
+}
+.mainFollow{
+	transition: .5s;
+}
+.mainFollow:hover{
+	transform: scale(1.5);
+	color: #f00;
+}
+.mainCome{
+	transition: .5s;
+}
+.mainCome:hover{
+	transform: scale(1.5);
+	color: #0f0;
+}
+.mainSlide2{
+	position: absolute;
+	width: 100%;
+	top: 0;
+	display: none;
+}
+.mainSlide3{
+	position: absolute;
+	width: 100%;
+	top: 0;
+	display: none;
+}
+
+/*end main*/
+
+/*start contact*/
+.Case{
+	color: orange;
+}
+
+.contactLeft{
+	margin:10px 0;
+}
+.contactLeftTitle{
+
+
+}
+.contactFB a{
+	display: inline-block;
+}
+.contactFB a img {
+	height: 50px;
+	margin: 10px;
+	transition: all linear 1s;
+}
+.contactFB a img:hover{
+	transform: rotate(-360deg);
+} 
+/*end contact*/
+
+
+/*start detail*/
+
+
+.detailAddCart{
+	float: right;
+	display: inline-block;
+}
+#map {
+    height: 400px;
+    width: 100%;
+}
+.detailLeftPrice{
+	color: #fa3e3e;
+}
+.detailRight{
+	height: 900px;
+	overflow: auto;
+}
+.detailRightItem{
+	background: #f7f8f9;
+	margin: 5px;
+	padding: 5px;
+	
+}
+.detailRightItem:hover{
+	background: #fff8f9;
+}
+.detailRightItem .thumbnail{
+	margin: 0;
+}
+.detailrightimg{
+	transition: .5s;
+}
+.detailrightimg:hover{
+	transform: scale(1.25);
+	z-index: 10;
+}
+.detailrightcontent h4 a{
+	color: #333;
+	text-decoration: none;
+	transition: margin-left .5s;
+}
+.detailrightcontent:hover h4 a{
+	margin-left: 20px;
+}
+
+.detailModalBig{
+	padding: 10px;
+}
+.detailModalbtn input{
+	margin-left: 10px;
+}
+.detailModalImgPay{
+	width: 100%;
+	transition: .5s;
+}
+.detailModalImgA:hover img{
+	transform: scale(1.1);
+}
+.detailModalBot{
+	padding: 0 0 10px;
+}
+.detailModalBotItem{
+	padding: 15px;
+
+}
+.detailModalBotItem:hover{
+	background: #f1f2f3;
+
+}
+.detailModalBotImg{
+	width: 100%;
+}
+.detailModalPrice{
+	color: red;
+}
+/*.detailComment{
+	background: #f2f3f5;
+	padding: 8px;
+	border: 1px solid #dddfe2;
+}
+.detailCommentItem{
+	padding: 4px;
+}
+.detailCommentAva{
+	display: inline-block;
+}
+.detailCommentAva a img{
+	height: 32px;
+	border-radius: 50%;
+}
+.detailCommentContent{
+	display: inline-block;
+	border-radius: 18px;
+	background: #fff;
+	line-height: 16px;
+	padding: 8px 10px;
+	margin-left: 4px;
+}
+.detailCommentContent a{
+	font-weight: bold;
+}*/
+/*end detail*/
+
+/*start media*/
+#myCarousel li{
+	list-style: none;
+}
+.mediaItemHover{
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #fff3;
+	display: none;
+}
+.mediaItem:hover .mediaItemHover{
+	display: block;
+}
+.detailrightimg img{
+	width: 100%;
+}
+/*end media*/
+
+
+/*start contact*/
+
+/*end contact*/
+
+/*start about*/
+.aboutbody {
+	margin-bottom: 20px;
+}
+.main-title{
+	color: orange;
+}
+.about-title{
+	color: orange;
+}
+
+/*end about*/
+
+/*start Search*/
+.searchInformation{
+	margin: 10px 0;
+}
+.searchHeadSearch{
+	font-size: 18px;
+}
+.searchHeadContent{
+	font-size: 22px;
+}
+.searchContent{
+	height: 1100px;
+	overflow: auto;
+}
+.searchContentItem{
+	padding: 10px;
+	background: #f2f3f4;
+	margin: 5px;
+}
+.searchContentItem:hover{
+	background: #eeffee;
+}
+.searchContentItemIcon{
+	font-size: 30px;
+}
+.searchContentItemImg{
+	margin: 0;
+	transition: .5s;
+}
+.searchContentItemImg:hover{
+	transform: scale(1.1);
+	z-index: 10;
+}
+.searchContentItemIcon a{
+	padding: 45px 0;
+	color: #000;
+	display: block;
+	transition: margin-left .5s;
+}
+.searchContentItemIcon:hover a{
+	margin-left: 20px;
+}
+.searchPrice a{
+	text-decoration: none;
+	color: #fa3e3e;
+}
+
+.searchHot{
+	border-left: 5px dashed #eee;
+}
+.searchHotInfo{
+	margin: 10px 5px;
+	font-size: 22px;
+}
+.searchHotContentItem{
+	padding: 10px;
+	background: #f2f3f4;
+	margin: 5px;
+}
+.searchHotContentItem:hover{
+	background: #f8eeee;
+}
+.searchHotItemIcon a{
+	padding: 30px 0;
+	color: #000;
+	display: block;
+	transition: margin-left .5s;
+}
+.searchHotItemIcon:hover a{
+	margin-left: 20px;
+}
+/*end Search*/
+
+/*start media*/
+.mediaModal{
+	color: #fff;
+}
+.mediaHead{
+	background: #000c;
+	opacity: 0.2;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	padding: 0 20px;
+}
+.mediaHead:hover{
+	opacity: 0.8;
+	color: #fff;
+}
+
+
+/*end media*/
+
+/*start footer*/
+footer{
+	margin-top: 5px;
+	background: url('../imgs/We-Own-The-Nite-NYC_Sunset-Music-Festival-161.jpg');
+	background-size: 100%;
+	color: #fff;
+}
+.footerBg{
+	background: #111;
+	opacity: 0.8;
+	padding: 20px;
+}
+footer a{
+	display: inline-block;
+	text-align: left;
+	color: #fff;
+}
+.footerItemList li{
+	list-style: none;
+}
+.footerItem ul li a{
+	text-decoration: none;
+	color: #FFF;
+	/*border-bottom: 1px solid #6B6B6B;*/
+	padding: 0 20px 6px 0;
+	position: relative;
+}
+.footerBorderBot{
+	position: absolute;
+	background: #DC5454;
+	height: 4px;
+	bottom: 0;
+	left: 0;
+	width: 0px;
+	transition: width .5s;
+}
+.footerItem ul li a:hover{
+	color: #DC5454;
+}
+.footerItem ul li a:hover .footerBorderBot{
+	width: 100%;
+}
+/*end footer*/
+
+/*start logoChangeAdminpage*/
+.btnChangeAdminpage{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: #f5f4f3;
+	border-radius: 50%;
+	padding: 5px;
+	z-index: 999;
+}
+.btnChangeAdminpage a img{
+	height: 60px;
+	/*transition: 1s;*/
+	transition: all linear 1s;
+}
+.btnChangeAdminpage:hover .btnCart img{
+	transform: rotate(-360deg);
+}
+.countCart{
+	position: absolute;
+	top: -1px;
+	left: 54px;
+	color: #fff;
+	background: #fa3e3e;
+	padding: 1px 5px;
+	border-radius: 34%;
+	font-weight: bold;
+}
+
+
+/*end logoChangeAdminpage*/
+
+
+/*start profile*/
+.accout-center{
+	padding: 20px 0;
+}
+.acc-photo-and-infomations{
+	border-radius: 10px;
+	padding: 20px;
+	background:#F7F8f9;
+	box-shadow: 5px 10px 8px #888888;
+}
+.acc-photo-and-infomations img{
+	width: 100px;
+	border-radius: 50%;
+}
+.change-infomation{
+	border-radius: 10px;
+	padding: 20px;
+	background:#F7F8f9;
+	box-shadow: 5px 10px 8px #888888;
+}
+.infomations{
+	margin: 10px 0;
+}
+/*End profile*/
+/*Start cart */
+.cartBorderInfoPay{
+	border-bottom: 5px solid #fc8804;
+	margin: 10px;
+}
+.cartInfoPay{
+	display: none;
+	margin: 0 20px;
+}
+.alert-cart{
+	text-align: center;
+	color: green;
+	font-size: 20px;
+}
+/*End cart*/
+@media screen and (max-width: 992px){
+	.searchHot{
+		border-left: 0;
+	}
+	.headerSearch{
+		display: none;
+	}
+	.detailModalBot {
+		display: none;
+	}
+	footer{
+		margin-top: 5px;
+		background: url('../imgs/holi-hindu/holi-432.jpg');
+		background-size: 100%;
+		color: #fff;
+	}
+}
+@media screen and (max-width: 768px) {
+	.headerLogo img{
+		margin: 0 ;
+	}
+    .searchContentItemIcon{
+    	display: none;
+    }
+    nav{
+    	background: rgba(10, 10, 10, 0.9);
+    	padding-top: 50px;
+    	position: absolute;
+    	top: 95px;
+    	left: 0;
+    	width: 100%;
+    	height: 100%;
+    	z-index: 98;
+    	display: none;
+    }
+    .navItem:hover{
+		background:#fc8804; 
+	}
+    .navItem ul li{
+		background: rgba(10, 10, 10, 0.9);
+		border-bottom: 1px solid rgba(44, 44, 44, 0.8);
+	}
+	.navItem ul li:hover{
+		background:#fc8804;
+	}
+	.navItem>ul{
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 40%;
+		z-index: 99;
+	}
+    .btnHeaderBar{
+    	display: block;
+    }
+    .detailModalBot {
+		display: none;
+	}
+    footer{
+		margin-top: 5px;
+		background: url('../imgs/holi-hindu/holi-432.jpg');
+		background-size: 100%;
+		color: #fff;
+	}
+	.footerXS{
+		display: none;
+	}
+    
+}
+@media screen and (max-width: 500px) {
+	.responSS{
+		display: none;
+	}
+	.headerLogo img{
+		margin: 0 0 0 -45px ;
+	}
+	.mainItemContentShow{
+		width: 80%;
+		height: 80%;
+		padding: 5px 10px;
+		margin-top: 20px;
+	}
+}

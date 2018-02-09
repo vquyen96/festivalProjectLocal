@@ -1,0 +1,36 @@
+<!-- <div class="row" ng-controller="ctrlListComment">
+	<div class="listCommentHeader">
+		<input type="button" name="" class="btn btn-warning" value="Thêm Lễ Hội"  ng-click="btnAddUser()"></input>
+	</div> -->
+	<div>
+		<table class="listLeHoiTable">
+			<tr>
+				<td><a href="" class="btn" ng-click="btnSortName(currentPage)">Tên Lễ Hội <span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td><a href="" class="btn" ng-click="btnSortTimeStart(currentPage)">Tên người dùng<span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td><a href="" class="btn" ng-click="btnSortTimeEnd(currentPage)">Nội Dung<span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td><a href="" class="btn">Sửa></span></a></td>
+				<td><a href="" class="btn">Xóa</span></a></td>
+				
+			</tr>
+			<tr ng-repeat="data in listData">
+				<td>{{data.lehoiName}}</td>
+				<td>{{data.userName}}</td>
+				<td>{{data.content}}</td>
+				<td><a href="" class="btn btn-primary" ng-click="btnEdit(data._id)">Sửa</a></td>
+				<td><a href="" class="btn btn-danger"  ng-click="btnDelete(data._id,data.nameLeHoi)">Xóa</a></td>
+			</tr>
+			
+		</table>
+		<div>
+		    <ul uib-pagination total-items="totalItems" 
+		    	ng-model="currentPage" 
+		    	ng-click="setPage(currentPage)" 
+		    	max-size="maxSize" 
+		    	class="pagination-sm" 
+		    	boundary-links="true" 
+		    	num-pages="numPages"
+		    	items-per-page= "10">		
+		    </ul>
+		</div>
+	</div>
+</div>

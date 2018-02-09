@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Festival</title>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="imgs/founder.png" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width:device-width, initial-scale=1" />
+    <link href="flexbin.css" type="text/css" rel="stylesheet" media="all" />
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
+	<!-- <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet"> -->
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+	<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script> -->
+	<script>
+		//paste this code under head tag or in a seperate js file.
+		// Wait for window load
+		// $(window).load(function() {
+			
+		// 	setTimeout(function(){
+  //               $(".masterLoad").fadeOut("slow");;
+  //           },500);
+		// });
+	</script>
+
+</head>
+<body>
+	<!-- <div class="masterLoad"></div> -->
+
+	<header class="container-fluid" ng-controller="ctrlHead">
+		<div class="detailLoad"></div>
+		<div class="row">
+			<button type="button" class="btn btnHeaderBar" ng-click="btnHeaderBar()">
+	            <span class=" glyphicon glyphicon-menu-hamburger"></span>
+	            
+	        </button>
+			<div class="headerLogo col-md-4 col-sm-6 col-xs-4">
+				<a href="#/!"><img src="imgs/festival_0.png"></a>
+			</div>
+
+			<div class="headerSearch col-md-4 col-sm-12 col-xs-12">
+				<div class="input-group">
+					<input id="textbox" type="text" class="valueSearch form-control" ng-model="searchTitle">
+					<span class="input-group-btn" ng-click=btnHeadSearch()>
+			        	<a class="btn btn-default">
+			        		<i class="fa fa-search" aria-hidden="true"></i>
+			        	</a>
+			    	</span>
+				</div>
+				
+			</div>
+			<div class="headerUser col-md-4 col-sm-6 col-xs-8">
+
+				<a href="login.html" class="headerLogin col-md-6 col-sm-6 col-xs-6" ng-hide="isLoggedIn">
+					<i class="fa fa-sign-in" aria-hidden="true"></i>
+					<span class="responSS">Đăng </span>Nhập
+				</a>
+				<a href="register.html" class="headerRegister col-md-6 col-sm-6 col-xs-6" ng-hide="isLoggedIn">
+					<i class="fa fa-user-plus" aria-hidden="true"></i>
+					<span class="responSS">Đăng </span>Kí
+				</a>
+				<a href="" class="headerLogin col-md-6 col-sm-6 col-xs-6" ng-show="isLoggedIn" ng-click="btnLogOut()">
+					<i class="fa fa-sign-out" aria-hidden="true"></i>
+	    			<span class="responSS">Đăng </span> Xuất
+				</a>
+				<a href="#!profile" class="headerUserAva col-md-6 col-sm-6 col-xs-6" ng-show="isLoggedIn">
+					<img src="{{avaUrl}}" class="headerAva">
+	    			<span class="responSS">{{loggedInUsername}}</span>
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<nav class="container-fluid" ng-controller="ctrlNav">
+		<ul class="row">
+			<li class="navItem col-md-2 col-sm-2 col-xs-12">
+				<a href="#!/">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					Trang Chủ 
+				</a>
+			</li>
+			<li class="navItem col-md-2 col-sm-2 col-xs-12">
+				<a href="" ng-click="menuSearch('Việt Nam')">
+					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					Việt Nam
+				</a>
+			</li>
+			<li class="navItem col-md-2 col-sm-2 col-xs-12">
+				<a href="">
+					<span class="glyphicon glyphicon-triangle-right navItem-icon" aria-hidden="true"></span>
+					Châu Lục
+				</a>			
+				<ul class="navDrop">
+				    <li><a href="" ng-click="menuSearch('Châu Á')">Châu Á</a></li>
+				    <li><a href="" ng-click="menuSearch('Châu Âu')">Châu Âu</a></li>
+				    <li><a href="" ng-click="menuSearch('Châu Mỹ')">Châu Mỹ</a></li>
+				    <li><a href="" ng-click="menuSearch('Châu Phi')">Châu Phi</a></li>
+				    <li><a href="" ng-click="menuSearch('Châu Úc')">Châu Úc</a></li>
+				 </ul>
+			</li>
+			<li class="navItem col-md-2 col-sm-2 col-xs-12">
+				<a href="">
+					<span class="glyphicon glyphicon-triangle-right navItem-icon" aria-hidden="true"></span>
+					Tôn Giáo
+				</a>				
+				<ul class="navDrop">
+				    <li><a href="" ng-click="menuSearch('Đạo Phật')">Đạo Phật</a></li>
+				    <li><a href="" ng-click="menuSearch('Đạo Hồi')">Đạo Hồi</a></li>
+				    <li><a href="" ng-click="menuSearch('Đạo Thiên Chúa')">Đạo Thiên Chúa</a></li>
+				    <li><a href="" ng-click="menuSearch('Đạo Hindu')">Đạo Hindu</a></li>
+				 </ul>
+			</li>
+			<li class="navItem col-md-2 col-sm-2 col-xs-12">
+				<a href="#!media">
+					<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+					Thư Viện
+				</a>			
+			</li>
+			<li class="navItem col-md-2 col-sm-2 col-xs-12">
+				<a href="#!about">
+					<span class="glyphicon glyphicon-triangle-right navItem-icon" aria-hidden="true"></span>
+					Giới Thiệu
+				</a>								
+				<ul class="navDrop">
+				    <li><a href="#!contact">Liên Hệ</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+
+	<main class="container-fluid" >
+		<div class="masterMain">
+			<div ng-view>
+				
+			</div>
+		</div>
+	</main>
+
+	<footer ng-controller="ctrlFooter">
+		<div class="footerBg">
+			<div class="container">
+				<div class="footerItem col-md-3 col-md-3 col-xs-12 footerXS">
+					<h4>Về chúng tôi</h4>
+					<ul class="footerItemList">
+						<li><a href="#/!">Trang chủ<div class="footerBorderBot"></div></a></li>
+						<li><a href="#!media">Thư viện<div class="footerBorderBot"></div></a></li>
+						<li><a href="#!about">Giới thiệu<div class="footerBorderBot"></div></a></li>
+						<li><a href="#!contact">Góp ý<div class="footerBorderBot"></div></a></li>
+					</ul>
+				</div>
+				<div class="footerItem col-md-3 col-md-3 col-xs-6">
+					<h4>Chính sách</h4>
+					<ul class="footerItemList">
+						<li><a href="#!chinhsachvanchuyen"><span class="footerXS">Chính sách </span>Vận chuyển<div class="footerBorderBot"></div></a></li>
+						<li><a href="#!chinhsachthanhtoan"><span class="footerXS">Chính sách </span>Thanh toán<div class="footerBorderBot"></div></a></li>
+						<li><a href="#!chinhsachbaomat"><span class="footerXS">Chính sách </span>Bảo mật<div class="footerBorderBot"></div></a></li>
+						<li><a href="#!chinhsachdoitra"><span class="footerXS">Chính sách </span>Đổi - trả<div class="footerBorderBot"></div></a></li>
+					</ul>
+					
+				</div>
+				<div class="footerItem col-md-3 col-md-3 col-xs-6">
+					<h4>Hướng dẫn</h4>
+					<ul class="footerItemList">
+						<li><a href="#!huongdanmuave"><span class="footerXS">Hướng dẫn </span>Mua vé<div class="footerBorderBot"></div></a></li>
+						<li><a href="#!huongdanthanhtoan"><span class="footerXS">Hướng dẫn </span>Thanh toán<div class="footerBorderBot"></div></a></li>
+						<li><a href="#!huongdandoitra"><span class="footerXS">Hướng dẫn </span>Đổi trả<div class="footerBorderBot"></div></a></li>
+						<li><a href="register.html">Đăng ký <span class="footerXS">thành viên</span><div class="footerBorderBot"></div></a></li>
+					</ul>
+				</div>
+				<div class="footerItem col-md-3 col-md-3 col-xs-12 footerXS">
+					<h4>Thành viên sáng lập</h4>
+					<ul class="footerItemList">
+						<li><a href="">Đỗ Văn Quyến<div class="footerBorderBot"></div></a></li>
+						<li><a href="">Nguyễn Tuấn Anh<div class="footerBorderBot"></div></a></li>
+						<li><a href="">Nguyễn Hồng Hanh<div class="footerBorderBot"></div></a></li>
+						<li><a href="">Vũ Trí Thành<div class="footerBorderBot"></div></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<div  ng-controller="ctrlbtnCart">
+		<div  class="btnChangeAdminpage">
+			<a href="" class="btnCart" ng-click="btnChangeAdmin()"> 
+				<img src="" id="btnChangeAdminimg">
+ 				<span class="countCart"></span>
+			</a>
+			
+		</div>
+		<div class=""></div>
+		
+	</div>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkWqbSNVYy7jSr5KC14doMijaosdwF-Bw&callback=initMap"></script> 
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	
+	<!-- <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script> -->
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

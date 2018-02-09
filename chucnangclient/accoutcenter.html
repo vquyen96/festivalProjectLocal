@@ -1,0 +1,97 @@
+<div class="container accout-center" ng-controller="ctrlAccountCenter">
+	<div class="detailLoad"></div>
+	<div class="col-md-5 col-sm-12 col-xs-12">
+		<div class="acc-photo-and-infomations">
+			<img ng-src="{{user.avaUrl}}" class="thumbnail">
+			<div class="infomations">
+				<b>
+					Tài Khoản:
+				</b>
+				{{user.username}}
+			</div>
+			<div class="infomations">
+				<b>
+					Ngày Sinh:
+				</b>
+				{{user.birthday | date : "dd/MM/y" }}
+			</div>
+			<div class="infomations">
+				<b>
+					Email:
+				</b>
+				{{user.email}}
+			</div>
+		</div>
+		<div class="acHistory" ng-show="acHistory">
+			<h2>Lịch sử đặt vé</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Lễ hội</th>
+						<th>Thời gian đặt vé</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="his in history | orderBy : 'updatedAt' | limitTo : 5">
+						<th>{{his.nameLehoi}}</th>
+						<th>{{his.updatedAt | date : "dd/MM/y hh:mm a" }}</th>
+					</tr>			
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="col-md-7 col-sm-12 col-xs-12">
+		<form method="post" name="form" class="change-infomation" ng-submit="register()" novalidate>
+			<div class="form-group">
+				<label>Tên Tài Khoản</label>
+				<input type="text" name="username" placeholder="Điền vào tài khoản của bạn" id="username" class="form-control" ng-model="user.username" ng-minlength="6" ng-maxlength="15" required>
+				<i class="fa fa-check text-success" ng-show="form.username.$dirty && form.username.$valid"></i>
+				<div class="text-danger">
+					<span ng-show="form.username.$dirty && form.username.$error.required">Vui lòng điền tài khoản</span>
+					<span ng-show="form.username.$error.minlength">Tên truy cập phải dài hơn 6 kí tự</span>
+					<span ng-show="form.username.$error.maxlength">Tên truy cập ngắn hơn 15 kí tự</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Mật khẩu</label>
+				<input type="password" name="password" placeholder="Mật khẩu" id="password" class="form-control" ng-model="user.password" ng-minlength="6" ng-maxlength="15" required>
+				<i class="fa fa-check text-success" ng-show="form.password.$dirty && form.password.$valid"></i>
+				<div class="text-danger">
+					<span ng-show="form.password.$dirty && form.password.$error.required">Vui lòng điền mật khẩu</span>
+					<span ng-show="form.password.$dirty && form.password.$error.minlength">Mật khẩu phải dài hơn 6 kí tự</span>
+					<span ng-show="form.password.$dirty && form.password.$error.maxlength">Mật khẩu phải ngắn hơn 15 kí tự</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Nhập lại mật khẩu</label>
+				<input type="password" name="repassword" placeholder="Nhập Lại mật khẩu" id="re-password" class="form-control" ng-model="repassword" required>
+				<i class="fa fa-check text-success" ng-show="form.repassword.$dirty && user.password == repassword"></i>
+				<div class="text-danger">
+					<span ng-show="form.repassword.$dirty && user.password !== repassword">Mật khẩu không trùng khớp</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Email</label>
+				<input type="email" name="email" placeholder="Điền vào Email của bạn" id="email" class="form-control" ng-model="user.email" required>
+				<i class="fa fa-check text-success" ng-show="form.email.$dirty && form.email.$valid"></i>
+				<div class="text-danger">
+					<span ng-show="form.email.$dirty && form.email.$error.required">Vui lòng nhập địa chỉ Email</span>
+					<span ng-show="form.email.$error.email">Không đúng định dạng email</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Ngày Sinh</label>
+				<input type="date" name="birthday" placeholder="YYYY/MM/DD" id="birthday" class="form-control" ng-model="user.birthday">
+			</div>
+			<div class="form-group">
+				<label>Ảnh Đại Diện</label>
+				<input type="file" accept="image/*" file-model="avatar" ng-model-instant multiple onchange="angular.element(this).scope().file_changed(this)">
+			</div>
+			<div>
+				<input type="button" class="btn btn-warning" id="btnSbm"  name="btnSbm" value="Thay Đổi" ng-click="btnChange()" ng-disabled="form.username.$invalid || form.password.$invalid || form.repassword.$invalid || form.repassword.$invalid ||form.email.$invalid">
+				<span class="glyphicon glyphicon-repeat text-danger userAlertDan" ng-hide="userAlertBtn"></span>
+				<span class="glyphicon glyphicon-ok text-success userAlertSuc" ng-show="userAlertBtn"></span>
+			</div>
+		</form>
+	</div>
+</div>

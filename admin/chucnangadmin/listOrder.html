@@ -1,0 +1,102 @@
+<div class="row" ng-controller="ctrlListOrder">
+	<div class="detailLoad"></div>
+	<div class="listLeHoiHeader">
+		<div class="col-md-5 col-sm-12 col-xs-12 form-group">
+				<select ng-model="setDate" ng-change="getDate()" class="form-control">
+					<option value="1" selected="selected">3 ngày qua</option>
+					<option value="2" >tuần qua</option>
+					<option value="3">tháng qua</option>
+					<option value="4">năm qua</option>
+				</select>
+			
+		</div>
+		<div class="col-md-7 col-sm-12 col-xs-12 form-group">
+			<input type="date" name="" class="btn btn-default" ng-model="timeSt"></input>
+			<input type="date" name="" class="btn btn-default" ng-model="timeEn"></input>
+			<input type="button" name="" class="btn btn-success" value="Thống Kê"  ng-click="btnTotalPrice()"></input>
+		</div>
+		
+	</div>
+	<div>
+		<table class="listLeHoiTable">
+			<tr>
+				<td><a href="" class="btn" ng-click="btnSortName(currentPage)">Thời gian<span class="responSS glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td><a href="" class="btn" ng-click="btnSortTimeStart(currentPage)">Thành phố<span class="responSS glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td class="responsive992 responsive768"><a href="" class="btn" ng-click="btnSortTimeEnd(currentPage)">Tổng giá<span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td class=""><a href="" class="btn" ng-click="btnSortStatus(currentPage)">Trạng thái<span class="responSS glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td class=""><a href="" class="">Nhận</span></a></td>
+
+				<td class="responsive768 responsive992"><a href="" class="btn">Từ chối</span></a></td>
+				
+			</tr>
+			<tr ng-repeat="data in listData.slice(((currentPage-1)*perPage), ((currentPage)*perPage))" ng-click="btnOrderDetail(data._id, data.fullName, data.totalPrice, data.email, data.phone, data.adress)">
+				<td class="">{{data.createdAt | date : "h:mm a  d/M/yy " }}</td>
+				<td>{{data.city}}</td>
+				<td class="responsive992 responsive768">{{data.totalPrice | currency: "" :0 }} VND</td>
+				<!-- <td class="">{{data.status}}</td> -->
+				<td class="listOrderSta2" ng-show="data.status == 2"><b><span class="responSS">Đang </span> chờ</b></td>
+				<td class="listOrderSta1" ng-show="data.status == 1"><b><span class="responSS">Đã </span>nhận</b></td>
+				<td class="listOrderSta0" ng-show="data.status == 0"><b><span class="responSS">Đã </span>xong</b></td>
+				<td class="listOrderSta_1" ng-show="data.status == -1"><b><span class="responSS">Từ </span>chối</b></td>
+				<td class="" ng-if="data.status == '2'"  ng-click="btnDone(data.fullName, data._id, 1)"><a href="" class="btn btn-primary">Nhận</a></td>
+				<td class="" ng-if="data.status == '1'" ng-click="btnDone(data.fullName, data._id, 0)"><a href="" class="btn btn-success">Xong</a></td>
+				<td class="responsive768 responsive992" ng-if="data.status == '2'" ng-click="btnDone(data.fullName, data._id, -1)"><a href="" class="btn btn-danger" >Từ chối</a></td>
+			</tr>
+			
+		</table>
+		<div>
+		    <ul uib-pagination total-items="totalItems" 
+		    	ng-model="currentPage" 
+		    	ng-click="setPage(currentPage)" 
+		    	max-size="maxSize" 
+		    	class="pagination-sm" 
+		    	boundary-links="true" 
+		    	num-pages="numPages"
+		    	items-per-page= "perPage">		
+		    </ul>
+		    <div class="btn btn-default listOrderTotalPrice" > Tổng Doanh Thu :{{totalPricePage | currency: "" :0 }}VNĐ</div>
+		</div>
+	</div>
+
+
+	<div id="modalOrderDetail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal-dialog modal-lg" role="document"> 
+        	<div class="modal-content">
+	            <div class="listOrderModal" ng-click="mediaBtnDetail()">
+	            	<h3>
+	            		<span class="listOrderModalFull">{{fullName}} </span>
+	            		---
+	            		<span class="listOrderModalPrice">{{price | currency: "" :0 }} VND</span>
+	            		<a href="" class="btn-success btn listOrderModalOff" ng-click="offModal()"> OK </a>
+	            	</h3>
+	            	<h4>
+	            		<span class="listOrderModalEmail">Email: {{email}} </span>
+	            		---
+	            		<span class="listOrderModalPhone">Số liên hệ: {{phone}} </span>
+	            	</h4>
+	            	
+	            	<p class="listOrderModalPhone">Địa chỉ : {{adress}}</h4>
+	                <table class="table">
+	                	<tr class="listOrderModalHeadTable">
+	                		<td>Tên lễ hội</td>
+	                		<!-- <td>Bắt đầu</td>
+	                		<td>Kết thúc</td> -->
+	                		<td>Tham gia</td>
+	                		<td>Số vé</td>
+	                		<td>Giá/vé</td>
+	                	</tr>
+	                	<tr ng-repeat="data in orderDetail">
+	                		<td>{{data.nameLehoi}}</td>
+	                		<td>{{data.time | date : "h:mm a  d/M/yy " }}</td>
+	                		<!-- <td>{{data.timeStart | date : "dd/MM/y" }}</td>
+	                		<td>{{data.timeEnd | date : "dd/MM/y" }}</td> -->
+	                		<td>{{data.quantity}}</td>
+	                		<td class="listOrderModalPrice">{{data.unitPrice}} VND</td>
+	                	</tr>
+	                </table>
+	            </div>
+	        </div>
+            
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->    
+</div>

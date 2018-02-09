@@ -1,0 +1,91 @@
+<div class="container" ng-controller="ctrlCart">
+	<h2>Danh sách vé đã đặt</h2>
+	<table class="table">
+		<tr>
+			<td><b>Lễ Hội</b></td>
+      <td><b>Tham gia</b></td>
+			<td><b>Giá vé</b></td>
+			<td><b>Số lượng</b></td>
+			<td><b>Tổng giá</b></td>
+		</tr>
+		<tr ng-repeat="data in listData">
+			<td>{{data.name}}</td>
+      <td>{{data.time | date : "dd/MM/y" }}</td>
+			<td>{{data.price| currency: "" :0}} <b>VND</b></td>
+			<td>
+				{{data.quantity}}
+				<a href="" class="btn btn-success" ng-click="btnAddToCart(data.id, data.name, data.price, 1)">+</a>
+				<a href="" class="btn btn-warning" ng-click="btnAddToCart(data.id, data.name, data.price, -1)">-</a>
+			</td>
+			<td>{{data.totalItemPrice| currency: "" :0}} <b>VND</b></td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+      <td> </td>
+			<td class="CartTotalPrice"></td>
+		</tr>
+	</table>
+	<a href="" class="btn btn-success" ng-click="btnInfoPay()"><b>Tiến hành đặt vé</b></a>
+	<div class="cartBorderInfoPay"></div>
+	<div class="cartInfoPay">
+		<form method="post" name="form" ng-submit="submit()" novalidate>
+        <div class="form-group">
+          <label>Họ và tên</label>
+          <input type="text" name="username" class="form-control" ng-model="fullname" placeholder="Tên đầy đủ." required>
+          <i class="fa fa-check text-success" ng-show="form.username.$dirty && form.username.$valid"></i>
+          <div class="text-danger">
+            <span ng-show="form.username.$dirty && form.username.$error.required">Vui lòng điền tài khoản</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" class="form-control" ng-model="email" placeholder="Ví dụ: abc@gmail.com." required>
+          <i class="fa fa-check text-success" ng-show="form.email.$dirty && form.email.$valid"></i>
+          <div class="text-danger">
+            <span ng-show="form.email.$dirty && form.email.$error.required">Vui lòng nhập địa chỉ Email</span>
+            <span ng-show="form.email.$error.email">Không đúng định dạng email</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Số điện thoại</label>
+
+          <input type="text" name="phone" class="form-control" ng-model="phone" required>
+          <i class="fa fa-check text-success" ng-show="form.phone.$dirty && form.phone.$valid"></i>
+          <div class="text-danger">
+            <span ng-show="form.phone.$dirty && form.phone.$error.required">Vui lòng nhập số điện thoại</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Thành Phố</label>
+          <input type="text" name="title" class="form-control" ng-model="city" required>
+
+          <i class="fa fa-check text-success" ng-show="form.title.$dirty && form.title.$valid"></i>
+          <div class="text-danger">
+            <span ng-show="form.title.$dirty && form.title.$error.required">Vui lòng nhập thành phố của bạn</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Địa chỉ nhận vé</label>
+          <textarea name="content" id="content" class="form-control" ng-model="adress" rows="3" required></textarea>
+          <i class="fa fa-check text-success" ng-show="form.content.$dirty && form.content.$valid"></i>
+          <div class="text-danger">
+            <span ng-show="form.content.$dirty && form.content.$error.required">Vui lòng điền đầy đủ thông tin để chúng tôi giao vé xin cảm ơn !</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="submit" name="sbm" ng-click="btnPay()" value="Đặt vé" class="btn btn-primary" ng-disabled="form.username.$invalid || form.email.$invalid || form.title.$invalid || form.content.$invalid">
+        </div>
+      </form>
+	</div>
+  <div id="modal-video" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal-dialog modal-lg " role="document">
+            <div class="modal-content">
+              <div class="row detailModalBig">
+                <p class="alert-cart">Cảm ơn bạn đã đặt vé! <br> Chúng tôi sẽ liên hệ với bạn trong vòng 5 phút. <br> Cần trợ giúp gì bạn hay gọi theo số 19001099.</p>
+              </div>
+            </div> 
+        </div>
+    </div>
+</div>

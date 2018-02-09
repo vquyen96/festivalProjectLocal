@@ -1,0 +1,41 @@
+<div class="row" ng-controller="ctrlListFeedBack">
+	<div class="detailLoad"></div>
+	<div class="listLeHoiHeader">
+		<input type="button" name="" class="btn btn-warning" value="Thêm Lễ Hội"  ng-click="btnAddUser()"></input>
+	</div>
+	<div>
+		<table class="listLeHoiTable">
+			<tr>
+				<td><a href="" class="btn" ng-click="btnSortName(currentPage)">Tên tài khoản <span class="responSS glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td class="responsive992"><a href="" class="btn" ng-click="btnSortEmail(currentPage)">Email<span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td class="responsive768"><a href="" class="btn" ng-click="btnSortCreatedAt(currentPage)">Thời gian gửi <span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td><a href="" class="btn" ng-click="btnSortTitle(currentPage)">Tiêu đề<span class="responSS glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td><a href="" class="btn" ng-click="btnSortContent(currentPage)">Nội dung<span class="responSS glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td class="responSS"><a href="" class="btn">Xóa góp ý</span></a></td>
+				<td class="responsive992"><a href="" class="btn">Xóa tài khoản</span></a></td>
+				
+			</tr>
+			<tr ng-repeat="data in listFeedBack.slice(((currentPage-1)*perPage), ((currentPage)*perPage)) | orderBy : listFeedbackSort">
+				<td>{{data.username}}</td>
+				<td class="responsive992">{{data.email}}</td>
+				<td class="responsive768">{{data.createdAt | date : "h:mm a  d/M/yy "}}</td>
+				<td>{{data.title}}</td>
+				<td>{{data.content}}</td>
+				<td class="responSS"><a href="" class="btn btn-primary" ng-click="btnDelFeedBack(data._id, data.username)">Xóa</a></td>
+				<td class="responsive992"><a href="" ng-show="data.userID != null && data.userID != undefined" class="btn btn-danger"  ng-click="btnDelUser(data.userID, data.username, data._id)">Xóa</a></td>
+			</tr>
+			
+		</table>
+		<div>
+		    <ul uib-pagination total-items="totalItems" 
+		    	ng-model="currentPage" 
+		    	ng-click="setPage(currentPage)" 
+		    	max-size="maxSize" 
+		    	class="pagination-sm" 
+		    	boundary-links="true" 
+		    	num-pages="numPages"
+		    	items-per-page= "perPage">		
+		    </ul>
+		</div>
+	</div>
+</div>

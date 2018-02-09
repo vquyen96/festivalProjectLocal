@@ -1,0 +1,62 @@
+<div class="container" ng-controller="ctrlContact">
+	<div class="detailLoad"></div>
+	<div class="row addUserForm" >
+		<div class="alert alert-success" role="alert" style="display: none;"></div>
+		<div class="alert alert-danger" role="alert" style="display: none;"></div>
+		<form method="post" name="form" ng-submit="plususer()" novalidate>
+			<div class="form-group">
+				<label>Địa chỉ</label>
+				<input type="text" name="adress" id="adress" class="form-control" ng-model="contact.adress" required>
+				<i class="fa fa-check text-success" ng-show="form.adress.$dirty && form.adress.$valid"></i>
+				<div class="text-danger">
+					<span ng-show="form.adress.$dirty && form.adress.$error.required">Vui lòng điền địa chỉ</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Chăm sóc khách hàng</label>
+				<input type="text" name="phoneCSKH" id="phoneCSKH" class="form-control" ng-model="contact.phoneCSKH" required>
+				<i class="fa fa-check text-success" ng-show="form.phoneCSKH.$dirty && form.phoneCSKH.$valid"></i>
+				<div class="text-danger">
+					<span ng-show="form.phoneCSKH.$dirty && form.phoneCSKH.$error.required">Vui lòng điền số điện thoại</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Liên hệ đối tác</label>
+				<input type="text" name="phoneDoiTac" id="phoneDoiTac" class="form-control" ng-model="contact.phoneDoiTac" required>
+				<i class="fa fa-check text-success" ng-show="form.phoneDoiTac.$dirty && form.phoneDoiTac.$valid"></i>
+				<div class="text-danger">
+					<span ng-show="form.phoneDoiTac.$dirty && form.phoneDoiTac.$error.required">Vui lòng điền số điện thoại</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Liên hệ tuyển dụng</label>
+				<input type="text" name="phoneTuyenDung" id="phoneTuyenDung" class="form-control" ng-model="contact.phoneTuyenDung" required>
+				<i class="fa fa-check text-success" ng-show="form.phoneTuyenDung.$dirty && form.phoneTuyenDung.$valid"></i>
+				<div class="text-danger">
+					<span ng-show="form.phoneTuyenDung.$dirty && form.phoneTuyenDung.$error.required">Vui lòng điền số điện thoại</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Email</label>
+				<input type="email" name="email" id="email" class="form-control" ng-model="contact.email" required>
+				<i class="fa fa-check text-success" ng-show="form.email.$dirty && form.email.$valid"></i>
+				<div class="text-danger">
+					<span ng-show="form.email.$dirty && form.email.$error.required">Vui lòng điền email</span>
+					<span ng-show="form.email.$dirty && form.email.$error.email">Email không đúng định dạng</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Website</label>
+				<input type="text" name="website" id="website" class="form-control" ng-model="contact.website" required>
+				<i class="fa fa-check text-success" ng-show="form.website.$dirty && form.website.$valid"></i>
+				<div class="text-danger">
+					<span ng-show="form.website.$dirty && form.website.$error.required">Vui lòng điền website</span>
+				</div>
+			</div>
+			
+			<div>
+				<input type="button" class="btn btn-primary" id="btnSbm"  name="btnSbm" value="Thay Đổi" ng-click="btnEditContact(contact._id)" ng-disabled="form.username.$invalid || form.password.$invalid || form.email.$invalid">
+			</div>
+		</form>
+	</div>
+</div>

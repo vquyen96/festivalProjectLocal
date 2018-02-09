@@ -1,0 +1,49 @@
+
+*{
+	font-family: Georgia;
+}
+body{
+	background: url('../imgs/EventPage-e1465261664195.jpg') no-repeat;
+}
+.detailLoad{
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('../imgs/Preloader_3.gif') center no-repeat #fff;
+}
+.registerPage{
+	
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+.formRegister{
+	width: 30%;
+	margin: 100px auto;
+	border-radius: 10px;
+	background: #fff9;
+	box-shadow: 5px 10px 8px #888888;
+	padding: 20px;
+}
+@media screen and (max-width: 992px){
+	.formRegister{
+		width: 50%;
+		margin: 70px auto;
+	}
+
+}
+@media screen and (max-width: 768px) {
+	.formRegister{
+		width: 70%;
+		margin: 50px auto;
+	}
+}
+@media screen and (max-width: 500px) {
+	.formRegister{
+		width: 90%;
+		margin: 20px auto;
+	}
+}

@@ -1,0 +1,150 @@
+<div ng-controller="ctrlDetail">
+	<div class="detailLoad"></div>
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  
+	  <ol class="carousel-indicators">
+	    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+	    <li data-target="#myCarousel" data-slide-to="1"></li>
+	    <li data-target="#myCarousel" data-slide-to="2"></li>
+	  </ol>
+
+	  
+	  <div class="carousel-inner">
+	    <div class="item active">
+	      <img class="detailslideimg" src="{{url4}}">
+	    </div>
+
+	    <div class="item">
+	      <img  class="detailslideimg" src="{{url5}}">
+	    </div>
+
+	    <div class="item">
+	      <img  class="detailslideimg" src="{{url6}}">
+	    </div>
+	  </div>
+
+	  
+	  <li class="left carousel-control" href="#myCarousel" data-slide="prev">
+	    <span class="glyphicon glyphicon-chevron-left"></span>
+	    <span class="sr-only">Previous</span>
+	  </li>
+	  <li class="right carousel-control" href="#myCarousel" data-slide="next">
+	    <span class="glyphicon glyphicon-chevron-right"></span>
+	    <span class="sr-only">Next</span>
+	  </li>
+	</div>
+	<div class="container">
+		<div class="col-md-8 col-sm-12 col-xs-12" id="detailcontent">
+			<h2 class="detailLeftTitle">
+				{{data.nameLeHoi}}
+				<div class="detailAddCart">
+					<input type="date" name="" class="btn btn-default" ng-model="timeCome">
+					<a href="" class="btn btn-success" ng-click='btnAddToCart(data._id, data.nameLeHoi, data.price, 1 , timeCome, data.timeStart , data.timeEnd)' data-toggle="modal" data-target=".bs-example-modal-lg">
+						<b>Đặt vé ngay</b>
+					</a>
+				</div>
+				
+			</h2>
+			<div>
+				<div class="detailtimeleft">
+					<b>Thời Gian Bắt Đầu:</b> {{data.timeStart | date : "dd/MM/y" }}
+						<br>
+					 <b>Thời Gian Kết Thúc:</b> {{data.timeEnd | date : "dd/MM/y" }}
+				</div>
+				<div class="detailplaceright">
+					<b>Địa Điểm :</b> {{data.diadiem}}
+				</div>
+				<div class="detailLeftPrice">
+					<b>Giá vé :</b> {{data.price | currency: "" :0 }} VND
+				</div>
+			</div>
+			<div>
+				<p>
+					{{data.chitiet}}
+				</p>
+			</div>
+			<a href="upload/le-hoi-bia.docx" class="btn btn-warning" ng-click="detailDowload()">
+				<span class="glyphicon glyphicon-save"></span>
+				Tải về
+			</a>
+			<!-- start map -->
+			<h3>Địa điểm tổ chức</h3>
+			<div id="map"></div>
+			<!-- end map -->
+		    
+		</div>
+		<div id="editor"></div>
+		<div class="col-md-4 col-sm-12 col-xs-12">
+			<div class="row">
+				<h2>Lễ hội liên quan</h2>
+			</div>
+			<div class="detailRight">
+				<div class="row detailRightItem" ng-repeat='data in listDataRight.slice(((currentPageR-1)*perPageR), ((currentPageR)*perPageR)) | filter : searchTitle'>
+					<div class="detailrightimg col-md-4 col-sm-4 col-xs-4 thumbnail">
+						<a href="" ng-click="btnDetail(data._id)"><img ng-src="{{data.url2}}"></a>
+						
+					</div>
+					<div class="detailrightcontent col-md-8 col-sm-8 col-xs-8">
+						<h4><a href="" ng-click="btnDetail(data._id)"> {{data.nameLeHoi}}</a></h4>
+						<div class="searchPrice">
+							<span class=" glyphicon glyphicon-credit-card"></span>
+							<span><a href="" ng-click="btnDetail(dataleft._id)">{{data.price | currency: "" :0 }} VND</a></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div>
+			    <ul uib-pagination total-items="totalItemsR" 
+			    	ng-model="currentPageR" 
+			    	ng-click="setPage(currentPageR)" 
+			    	max-size="maxSize" 
+			    	class="pagination-sm" 
+			    	boundary-links="true"
+			    	rotate = "true"  
+			    	force-ellipses="true" 
+			    	num-pages="numPages"
+			    	items-per-page= "perPageR">		
+			    </ul>
+			</div>
+		</div>
+	</div>
+
+	<div id="modal-video" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal-dialog modal-lg " role="document">
+           	<div class="modal-content">
+
+           		<div class="row detailModalBig">
+		            <div class="col-md-5 col-sm-5 col-xs-5">
+		            	<a href="" class="detailModalImgA">
+		            		<img src="{{url3}}" class="detailModalImgPay thumbnail">
+		            	</a>
+		            	
+		            </div>
+		            <div class="col-md-7 col-sm-7 col-xs-7" class="Pay-title">
+		            	<h2>{{data.nameLeHoi}}</h2>
+		            	<p><b>Tham gia: </b>{{timeCome | date : "dd/MM/y" }}</p>
+		            	<p class="detailLeftPrice">Giá vé: {{data.price | currency: "" :0 }} VND</p>
+		            	<p class="detailModalbtn">
+		            		<a class="btn btn-default" href="" ng-click="detailOffModal()">Xem thêm lễ hội</a>
+		            		<input type="button" value="Đặt vé" class="btn-success btn" ng-click="detailbtnCart()">
+		            	</p>
+		            	
+		            </div>
+		        </div>
+		        <div class="row detailModalBot">
+		        	<div class="col-md-3 col-sm-6 col-xs-12 detailModalBotItem" ng-repeat="data in listDataRight | limitTo:4 "  ng-click="btnDetail(data._id)">
+		        		<a href="">
+		        			<img ng-src="{{data.url3}}" class="detailModalBotImg thumbnail">
+		        		</a>
+		        		<a href="">
+		        			<h4>{{data.nameLeHoi}}</h4>
+		        			
+		        		</a>
+		        		<p class="detailModalPrice">{{data.price | currency: "" :0 }} VND</p>
+		        	</div>
+		        </div>
+           	</div> 
+        </div>
+    </div>
+</div>

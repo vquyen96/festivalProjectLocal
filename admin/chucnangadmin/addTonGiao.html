@@ -1,0 +1,15 @@
+<div class="container" ng-controller="ctrlAddTonGiao">
+	<div class="row addUserForm" >
+		<div class="alert alert-success" role="alert" style="display: none;"></div>
+		<div class="alert alert-danger" role="alert" style="display: none;"></div>
+		<form method="post">
+			<div class="form-group">
+				<label>Tên Tôn Giáo</label>
+				<input type="text" name="nameTonGiao" id="nameTonGiao" class="form-control" ng-model="data.nameTonGiao">
+			</div>
+			<div>
+				<input type="button" class="btn btn-primary" id="btnSbm"  name="btnSbm" value="Thêm mới" ng-click="btnAdd()">
+			</div>
+		</form>
+	</div>
+</div>
